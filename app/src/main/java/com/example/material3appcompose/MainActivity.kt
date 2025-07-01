@@ -58,6 +58,7 @@ import androidx.compose.ui.window.DialogProperties
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
+import com.example.material3appcompose.components.BottomNavigationBar
 import com.example.material3appcompose.ui.theme.Material3AppComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -70,6 +71,10 @@ class MainActivity : ComponentActivity() {
 
                 var showDialog by remember {
                     mutableStateOf(false)
+                }
+
+                var selectedItemIndex by remember {
+                    mutableStateOf(0)
                 }
 
                 if (showDialog) {
@@ -93,7 +98,10 @@ class MainActivity : ComponentActivity() {
                         Material3TopAppBar()
                     },
                     bottomBar = {
-                        Material3BottomBar()
+                        //Material3BottomBar()
+                        BottomNavigationBar( onItemSelected = { botomBarSelectedItem ->
+                            selectedItemIndex = botomBarSelectedItem
+                        })
                     }) { paddingValues ->
                     Box(modifier = Modifier.padding(paddingValues)) {
                         Column(
@@ -103,8 +111,22 @@ class MainActivity : ComponentActivity() {
                                 .padding(vertical = 10.dp)
                                 .verticalScroll(rememberScrollState())
                         ) {
-                            MaterialDogCard()
-                            MaterialDogCard()
+
+                            when (selectedItemIndex) {
+                                0 -> {
+                                    MaterialDogCard()
+                                    MaterialDogCard()
+                                }
+                                1 -> {
+                                    Text(text = "Favorites")
+                                }
+                                2 -> {
+                                    Text(text = "Notifications")
+                                }
+                                3 -> {
+                                    Text(text = "Settings")
+                                }
+                            }
                         }
                     }
                 }
