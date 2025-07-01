@@ -54,6 +54,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.DialogProperties
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
@@ -236,6 +237,14 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun Material3AlertDialog(onDismiss: () -> Unit) {
         AlertDialog(
+            properties = DialogProperties(
+                dismissOnBackPress = false,
+                dismissOnClickOutside = false
+            ),
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            titleContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            textContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            iconContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
             onDismissRequest = {
                 onDismiss()
             },
@@ -258,6 +267,11 @@ class MainActivity : ComponentActivity() {
             },
             text = {
                 Text(text = "Are you sure wan call my dog")
-            })
+            },
+            icon = {
+                Icon(imageVector = Icons.Filled.Call, contentDescription = null)
+            }
+
+        )
     }
 }
