@@ -59,6 +59,7 @@ import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.example.material3appcompose.components.BottomNavigationBar
+import com.example.material3appcompose.components.SettingsScreen
 import com.example.material3appcompose.ui.theme.Material3AppComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -124,7 +125,7 @@ class MainActivity : ComponentActivity() {
                                     Text(text = "Notifications")
                                 }
                                 3 -> {
-                                    Text(text = "Settings")
+                                    SettingsScreen()
                                 }
                             }
                         }
