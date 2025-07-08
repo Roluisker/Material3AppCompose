@@ -59,6 +59,7 @@ import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.example.material3appcompose.components.BottomNavigationBar
+import com.example.material3appcompose.components.FavoritesScreen
 import com.example.material3appcompose.components.SettingsScreen
 import com.example.material3appcompose.ui.theme.Material3AppComposeTheme
 
@@ -100,7 +101,7 @@ class MainActivity : ComponentActivity() {
                     },
                     bottomBar = {
                         //Material3BottomBar()
-                        BottomNavigationBar( onItemSelected = { botomBarSelectedItem ->
+                        BottomNavigationBar(onItemSelected = { botomBarSelectedItem ->
                             selectedItemIndex = botomBarSelectedItem
                         })
                     }) { paddingValues ->
@@ -110,7 +111,7 @@ class MainActivity : ComponentActivity() {
                             horizontalAlignment = Alignment.CenterHorizontally,
                             modifier = Modifier
                                 .padding(vertical = 10.dp)
-                                .verticalScroll(rememberScrollState())
+                                //.verticalScroll(rememberScrollState())
                         ) {
 
                             when (selectedItemIndex) {
@@ -118,12 +119,15 @@ class MainActivity : ComponentActivity() {
                                     MaterialDogCard()
                                     MaterialDogCard()
                                 }
+
                                 1 -> {
-                                    Text(text = "Favorites")
+                                    FavoritesScreen()
                                 }
+
                                 2 -> {
                                     Text(text = "Notifications")
                                 }
+
                                 3 -> {
                                     SettingsScreen()
                                 }
